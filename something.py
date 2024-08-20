@@ -17,7 +17,7 @@ left_width = 15
 left_height = 100
 left_vel = 40
 
-right_x = 5
+right_x = 780
 right_y = 100
 right_width = 15
 right_height = 100
@@ -25,7 +25,7 @@ right_vel = 40
 
 run = True
 while run:
-    pygame.time.delay(100)
+    pygame.time.delay(80)
 
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
@@ -33,13 +33,16 @@ while run:
     
     keys = pygame.key.get_pressed()
 
-    if keys[pygame.K_UP]:
+    # Move left paddle
+    if keys[pygame.K_UP] and left_y > 0:
         left_y -= left_vel
-    if keys[pygame.K_DOWN]:
+    if keys[pygame.K_DOWN] and left_y < 800 - left_height:
         left_y += left_vel
-    if keys[pygame.K_w]:
+
+    # Move right paddle
+    if keys[pygame.K_w] and right_y > 0:
         right_y -= right_vel
-    if keys[pygame.K_s]:
+    if keys[pygame.K_s] and right_y < 800 - right_height:
         right_y += right_vel
     
     win.fill((0,0,0))
